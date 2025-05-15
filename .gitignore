@@ -1,0 +1,39 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+venv/
+.venv/
+env/
+.env/
+# virtualenv_seed/
+# conda/
+# pyenv/
+# pip-log.txt
+# pip-delete-this-directory.txt
+# *.egg
+# *.whl
+
+# Django specific
+*.log
+*.pot
+media/
+static/
+local_settings.py
+
+# SQLite databases
+*.db
+db.sqlite3
+
+# IDE and editor settings
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# OS or system files
+.DS_Store
