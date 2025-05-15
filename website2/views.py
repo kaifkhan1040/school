@@ -46,7 +46,8 @@ def contact(request):
             print('errr',form.errors)
             
             messages.error(request, f'{form.errors}')
-    return render(request,'web/contactus.html',{'form':form})
+            return redirect('web2:index')
+    return render(request,'web2/contactus.html',{'form':form})
 
 def gallery(request):
     gallery=Gallery.objects.all()

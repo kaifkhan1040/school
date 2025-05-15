@@ -20,10 +20,11 @@ class Gallery(models.Model):
     
 
 class Contactus(models.Model):
-    name = models.CharField(max_length=255)
-    email = models.CharField(max_length=255)
-    subject = models.CharField(max_length=255)
-    message = models.TextField(blank=True)
+    student_name = models.CharField(max_length=255)
+    parents_name = models.CharField(max_length=255)
+    parents_mobile_number = models.CharField(max_length=10)
+    child_date_of_birth = models.DateField(null=True,blank=True)
+    select_class_looking_for  = models.CharField(choices=[('P.Nursery','P.Nursery'),('Nursery','Nursery')])
 
     def __str__(self):
         return self.name
