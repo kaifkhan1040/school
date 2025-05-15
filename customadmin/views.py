@@ -56,7 +56,7 @@ def delete_event(request,id=None):
   
 def gallery(request):
     gallery = Gallery.objects.all()
-    return render(request,'customadmin/gallery.html',{'gallecoursery':gallery})
+    return render(request,'customadmin/gallery.html',{'gallery':gallery})
 
 def add_gallery(request,id=None):
     print('run')
