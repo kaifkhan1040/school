@@ -392,15 +392,15 @@
 .notice-slider.moving {
   display: flex;
   gap: 20px;
-  animation: scroll-left 5s linear infinite;
+  animation: scroll-left 10s linear infinite;
 }
 
 @keyframes scroll-left {
   0% {
-    transform: translateX(0%);
+    transform: translateX(100%);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
 
@@ -874,11 +874,37 @@ h2 {
   </div>
 </div>
 <style>
-    .vm-section {
-  background: #243987;
+
+.vm-section {
+  position: relative;
+  background: url('{% static "school/images/img/IMG_9284.JPG" %}') no-repeat center center;
+  background-size: cover;
+  background-color: #000;
   color: white;
   padding: 40px 20px;
+  z-index: 1;
+  overflow: hidden;
 }
+
+/* Add dark overlay */
+.vm-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5); /* darkness level */
+  z-index: 0;
+}
+
+/* Keep content above the overlay */
+.vm-container {
+  position: relative;
+  z-index: 2;
+}
+
+
 
 .vm-container {
   display: flex;
@@ -2173,3 +2199,5 @@ h2 {
 </script>
 {% endif %}
  {% endblock %}
+
+
