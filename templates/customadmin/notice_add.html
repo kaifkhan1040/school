@@ -37,71 +37,54 @@
                                     </div>
                                 <!-- Account Tab starts -->
                                 <div class="card-header border-bottom">
-                                    <h4 class="card-title">Gallery</h4>
+                                    <h4 class="card-title">Notice</h4>
                                 </div>
                                 <div class="card-body py-2 my-25">
                                     
                                         <!-- upload and reset button -->
                                     <form class="form-validate" method="POST" enctype="multipart/form-data">
-                                    <div class="d-flex">
-                                            <a href="#" class="me-25">
-                                                <img src="{% if obj.image %}{{ obj.image.url }}{% else %}{% static 'app-assets/images/avatars/1.png' %}{% endif %}"
-                                                    id="account-upload-img" class="uploadedAvatar rounded me-50" 
-                                                    alt="profile image" height="100" width="100" />
-                                            </a>
-                                            <div class="d-flex align-items-end mt-75 ms-1">
-                                                <div>
-                                                   
-                                                    <label for="account-upload" class="btn btn-sm btn-primary mb-75 me-75">Upload</label>
-                                                    <input type="file" name="image" multiple id="account-upload" hidden accept="image/*" />
-                                                    <p class="mb-0">Allowed file types: png, jpg, jpeg.</p>
-                                                   
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <script>
-                                            document.getElementById("account-upload").addEventListener("change", function(event) {
-                                            const file = event.target.files[0];
-                                            if (file) {
-                                                const reader = new FileReader();
-                                                reader.onload = function(e) {
-                                                    document.getElementById("account-upload-img").src = e.target.result;
-                                                };
-                                                reader.readAsDataURL(file);
-                                            }
-                                        });
-                                    </script>
+
+                                        
                                     <!--/ upload and reset button -->
                                     
                                         <div class="tab-pane active" id="account" aria-labelledby="account-tab" role="tabpanel">
                                             {% csrf_token %}
                                             <div class="row">
                                               
-                                                <div class="col-md-4">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="username">title</label>
+                                                        <label for="username">Title</label>
                                                         {{form.title}}
                                                         <!-- <input type="file" name="image" id="account-upload" accept="image/*" /> -->
 
                                                         <!-- {{form.image}} -->
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-6 mb-2">
                                                     <div class="form-group">
-                                                        <label for="username">Decsciption</label>
+                                                        <label for="username">Description</label>
                                                         {{form.description}}
-                                                        
+                                                        <!-- <input type="file" name="image" id="account-upload" accept="image/*" /> -->
+
+                                                        <!-- {{form.image}} -->
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="username">Video</label>
-                                                        {{form.video}}
-                                                        
+                                                        <label for="username">date</label>
+                                                        {{form.date}}
+                                                       
                                                     </div>
                                                 </div>
-                                                
-                                
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="username">file</label>
+                                                        {{form.file}}
+                                                       
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="col-12 d-flex flex-sm-row flex-column mt-2">
                                                 <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Save Changes</button>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <nav class="navbar navbar-expand-lg navbar-mainbg">
+  <div class="container-fluid">
+    <a class="navbar-brand navbar-logo text-white" href="#">MyLogo</a>
+    <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto d-flex justify-content-end w-100">
+        <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+        <li class="nav-item ">
+          <a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt"></i>Accessible Organ</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="Virtual_Drum_Kit.html"><i class="far fa-address-book"></i>Virtual Drum Kit</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Xylophone.html"><i class="far fa-clone"></i>Xylophone</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="meow_meow_keyboard.html"><i class="far fa-calendar-alt"></i>meow meow keyboard</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<style>
+    /* * {
+  margin: 0;
+  padding: 0;
+} */
+
+/* body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #e0e0e0;
+  background-size: 50vh auto;
+  background-repeat: no-repeat;
+  background-position: center top;
+} */
+
+.music_box {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: 20px;
+  border-bottom: 1px solid #b1b9c19e;
+}
+
+.footer_info,
+.title,
+small {
+  text-align: center;
+}
+
+.box_bumps .key {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100px;
+  width: 100px;
+  margin: 20px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #f0f0f0, #cacaca);
+  box-shadow: 15px 15px 40px #b3b3b3, -15px -15px 40px #ffffff;
+
+  position: relative;
+  border-color: #f0f8ff9e;
+}
+
+.box_bumps .key:focus {
+  outline: none;
+}
+
+.box_bumps .key::before {
+  content: "";
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: 0;
+  left: auto;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+}
+
+.key:active,
+.playing {
+  transform: scale(0.95);
+  border: 2px solid rgba(206, 181, 135, 0.2) !important;
+  background: linear-gradient(145deg, #cacaca, #f0f0f0) !important;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff !important;
+}
+
+.box_bumps {
+  display: flex;
+}
+
+.footer_info,
+.box_bumps strong {
+  font-size: 15px;
+}
+
+.footer_info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer_info .heart {
+  display: inline-block;
+  -webkit-animation: 1s infinite beatHeart;
+  animation: 1s infinite beatHeart;
+  color: #ff0707;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 5px;
+}
+
+@keyframes beatHeart {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  25% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  60% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+.key[data-key="65"]::before {
+  background-image: url("https://arsen-nazaryan.github.io/drum_kit/media/icons/clap.png");
+}
+.key[data-key="83"]::before {
+  background-image: url("https://arsen-nazaryan.github.io/drum_kit/media/icons/snare.png");
+}
+.key[data-key="68"]::before {
+  background-image: url("https://arsen-nazaryan.github.io/drum_kit/media/icons/kick.png");
+}
+.key[data-key="70"]::before {
+  background-image: url("https://arsen-nazaryan.github.io/drum_kit/media/icons/hihat.png");
+}
+.key[data-key="74"]::before {
+  background-image: url("https://arsen-nazaryan.github.io/drum_kit/media/icons/boom.png");
+}
+.key[data-key="75"]::before {
+  background-image: url("https://arsen-nazaryan.github.io/drum_kit/media/icons/tom.png");
+}
+.key[data-key="76"]::before {
+  background-image: url("https://arsen-nazaryan.github.io/drum_kit/media/icons/tink.png");
+}
+.key[data-key="186"]::before {
+  background-image: url("https://arsen-nazaryan.github.io/drum_kit/media/icons/openhat.png");
+}
+
+@media only screen and (max-width: 768px) {
+  .box_bumps {
+    flex-direction: column;
+  }
+  .box_bumps strong {
+    display: none;
+  }
+
+  .box_bumps .key::before {
+    top: calc(50% - 30px);
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  body {
+    background-size: 20vh auto;
+    background-position: center 3vh;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .box_bumps .key {
+    margin: 10px;
+  }
+  .music_box {
+    justify-content: space-around;
+  }
+}
+
+</style>
+<!-- <h1 class="title">Virtual Drum Kit</h1>
+<small>Play the virtual drum kit</small> -->
+
+<div class="music_box">
+
+  <div class="box_bumps">
+    <button data-key="65" id="65" class="key">
+      <strong>A</strong>
+      <span>clap</span>
+    </button>
+    <button data-key="83" id="83" class="key">
+      <strong>S</strong>
+      <span>snare</span>
+    </button>
+    <button data-key="68" id="68" class="key">
+      <strong>D</strong>
+      <span>kick</span>
+    </button>
+    <button data-key="70" id="70" class="key">
+      <strong>F<span>_</span></strong>
+      <span>hi hat</span>
+    </button>
+
+    <audio data-key="65" src="https://arsen-nazaryan.github.io/drum_kit/media/sounds/clap.wav"></audio>
+    <audio data-key="83" src="https://arsen-nazaryan.github.io/drum_kit/media/sounds/snare.wav"></audio>
+    <audio data-key="68" src="https://arsen-nazaryan.github.io/drum_kit/media/sounds/kick.wav"></audio>
+    <audio data-key="70" src="https://arsen-nazaryan.github.io/drum_kit/media/sounds/hihat.wav"></audio>
+  </div>
+
+  <div class="box_bumps">
+    <button data-key="74" id="74" class="key">
+      <strong>_J</strong>
+      <span>boom</span>
+    </button>
+    <button data-key="75" id="75" class="key">
+      <strong>K</strong>
+      <span>tom</span>
+    </button>
+    <button data-key="76" id="76" class="key">
+      <strong>L</strong>
+      <span>tink</span>
+    </button>
+    <button data-key="186" id="186" class="key">
+      <strong>;</strong>
+      <span>openhat</span>
+    </button>
+
+    <audio data-key="74" src="https://arsen-nazaryan.github.io/drum_kit/media/sounds/boom.wav"></audio>
+    <audio data-key="75" src="https://arsen-nazaryan.github.io/drum_kit/media/sounds/tom.wav"></audio>
+    <audio data-key="76" src="https://arsen-nazaryan.github.io/drum_kit/media/sounds/tink.wav"></audio>
+    <audio data-key="186" src="https://arsen-nazaryan.github.io/drum_kit/media/sounds/openhat.wav"></audio>
+  </div>
+
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-8">
+      <h3>Virtual drum kit</h3>
+<p>Drummers often use their right hand to play the cymbals (crash cymbal, ride cymbal, and hi-hat), and their left hand to play the snare drum. When using shortcuts, use the left hand to play both the snare drum and the bass drum.
+
+Play the virtual drums, and then apply your new skills to real drums. Use the drum machine to find inspiration for drum beats and rhythm patterns. A fun way to practice with the virtual drums is by playing along with your favorite songs.</p>
+
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>
+<!-- <p class="footer_info">Created with <a class="heart" target="blank" href="https://arsen-nazaryan.github.io/" title="Arsen Nazaryan"> ♥ </a></p> -->
+<script>
+    function playSounds(e) {
+  const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+
+  if (!audio) return;
+  audio.currentTime = 0;
+  audio.play();
+  key.classList.add("playing");
+}
+
+function soundsTap(e) {
+  var el = this.id;
+
+  const audio = document.querySelector(`audio[data-key="${el}"]`);
+
+  if (!audio) return;
+  audio.currentTime = 0;
+  audio.play();
+}
+
+function removeTransition(e) {
+  if (e.propertyName !== "transform") return;
+  this.classList.remove("playing");
+}
+
+const key_btn = document.querySelectorAll(".key");
+
+key_btn.forEach((key) =>
+  key.addEventListener("transitionend", removeTransition)
+);
+
+key_btn.forEach((el) => el.addEventListener("click", soundsTap));
+
+window.addEventListener("keydown", playSounds);
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="script.js"></script>
+</body>
+</html>
+
+

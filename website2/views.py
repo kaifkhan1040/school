@@ -4,7 +4,9 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect, get_object_or_404
 from customadmin.forms import ContactusForm
 from django.contrib import messages
-from customadmin.models import Gallery,Event
+from customadmin.models import Gallery,Event,Notice
+from django.http import FileResponse, Http404
+import os
 
 def chunked(lst, n):
         return [lst[i:i+n] for i in range(0, len(lst), n)]
@@ -18,41 +20,63 @@ def index(request):
 
     # car_brands_grouped = chunked(car, 4)
     form=ContactusForm()
-    gallery=Gallery.objects.all()
+    gallery=Gallery.objects.filter(image__isnull=False).exclude(image='')
     gallery_group = chunked(gallery, 3)
     print('*'*100)
-    print(gallery_group)
-    for i in gallery_group:
-        print(i)
+    notices=Notice.objects.all()
+    print('*'*1000)
+    print('notice:',notices)
+    # print(gallery_group)
+    # for i in gallery_group:
+    #     print(i)
     return render(request,'web2/index.html',{
         # 'car_brands_grouped':car_brands_grouped,'car':car,
-                                            'form':form,'gallery_group':gallery_group
+                                            'form':form,'gallery_group':gallery_group,'notices':notices,'is_index':True
                                             })
 
 def about(request):
-    return render(request,'web/aboutus.html')
+    return render(request,'web2/about.html',{'is_about':True})
+from django.utils.safestring import mark_safe
 
 
 def contact(request):
     form=ContactusForm()
+    print('*'*100)
     if request.method=="POST":
         form=ContactusForm(request.POST)
         if form.is_valid():
             form.save()
             
-            messages.success(request, f'contact form submitted successfully!')
+            messages.success(request, f'Thank you for reaching out to us. Our team will get back to you shortly.')
             return redirect('web2:index')
         else:
             print('errr',form.errors)
-            
-            messages.error(request, f'{form.errors}')
+            error_messages = '<br>'.join(
+                [f"{error}" for field_errors in form.errors.values() for error in field_errors]
+            )
+            messages.error(request, mark_safe(error_messages))
             return redirect('web2:index')
     return render(request,'web2/contactus.html',{'form':form})
 
 def gallery(request):
-    gallery=Gallery.objects.all()
-    gallery_group = chunked(gallery, 3 if len(gallery)<2 else 1)
-    return render(request,'web/gallery.html',{'gallery':gallery_group})
+    gallery=Gallery.objects.filter(image__isnull=False).exclude(image='')
+    gallery_group = chunked(gallery, 3)
+    return render(request,'web2/gallery.html',{'gallery_group':gallery_group,'is_gallery':True})
+
+def gallery_video(request):
+    gallery=Gallery.objects.filter(video__isnull=False).exclude(video='')
+    gallery_group_video = chunked(gallery, 3)
+    return render(request,'web2/gallery.html',{'gallery_group_video':gallery_group_video,'is_gallery':True})
 
 def addmission(request):
-    return render(request,'web/addmission.html')
+    return render(request,'web2/addmission.html')
+
+def fee(request):
+    return render(request,'web2/fee.html',{'is_fee':True})
+
+def download_pdf(request):
+    filepath = os.path.join('static', 'Registration_Form.pdf')
+    try:
+        return FileResponse(open(filepath, 'rb'), content_type='application/pdf')
+    except FileNotFoundError:
+        raise Http404("PDF not found")

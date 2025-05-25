@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from customadmin.forms import ContactusForm
 from django.contrib import messages
-from customadmin.models import Gallery,Event
+from customadmin.models import Gallery,Event,Notice
 
 def chunked(lst, n):
         return [lst[i:i+n] for i in range(0, len(lst), n)]
@@ -17,9 +17,12 @@ def index(request):
     form=ContactusForm()
     gallery=Gallery.objects.all()
     gallery_group = chunked(gallery, 3 if len(gallery)<2 else 1)
+    notices=Notice.objects.all()
+    print('*'*1000)
+    print('notice:',notices)
     return render(request,'web/index.html',{
         # 'car_brands_grouped':car_brands_grouped,'car':car,
-                                            'form':form,'gallery':gallery_group
+                                            'form':form,'gallery':gallery_group,"notices":notices
                                             })
 
 def about(request):

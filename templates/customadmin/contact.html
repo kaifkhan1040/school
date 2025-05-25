@@ -54,10 +54,10 @@
                                 <thead class="table-light">
                                     <tr>
                                         <th></th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Subject</th>
-                                        <th>Message</th>
+                                        <th>Student Name</th>
+                                        <th>Parents Name</th>
+                                        <th>Parents Mobile Number</th>
+                                        <th>Class</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -65,10 +65,10 @@
                                     {% for i in contactus %}
                                     <tr>
                                         <td>{{forloop.counter}}</td>
-                                        <td>{{i.name}}</td>
-                                        <td>{{i.email}}</td>
-                                        <td>{{i.subject}}</td>
-                                        <td>{{ i.message|truncatechars:25 }}</td>
+                                        <td>{{i.student_name}}</td>
+                                        <td>{{i.parents_name}}</td>
+                                        <td>{{i.parents_mobile_number}}</td>
+                                        <td>{{ i.select_class_looking_for|truncatechars:25 }}</td>
 
                                         <td>
                                            <a href="{% url 'customadmin:view_contactus' id=i.id %}">

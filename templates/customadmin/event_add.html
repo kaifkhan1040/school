@@ -47,14 +47,28 @@
                                         <div class="tab-pane active" id="account" aria-labelledby="account-tab" role="tabpanel">
                                             {% csrf_token %}
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="username">Name</label>
                                                         {{form.name}}
                                                         
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="username">Start Date</label>
+                                                        {{form.start_date}}
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="username">End Date</label>
+                                                        {{form.end_date}}
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="username">Decsciption</label>
                                                         {{form.description}}

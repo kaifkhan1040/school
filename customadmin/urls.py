@@ -17,4 +17,9 @@ urlpatterns = [
     path('contactus/', views.contactus, name='contactus'),
     path('view-contactus/<int:id>/', views.view_contactus, name='view_contactus'),
     path('delete-contactus/<int:id>/', views.delete_contactus, name='delete_contactus'),
+    path('calendar_events/', views.calendar_events, name='calendar_events'),
+    path('notice/', views.notice, name='notice'),
+    path('add-notice/', views.add_notice, name='add_notice'),
+    path('update-notice/<int:id>/', views.add_notice, name='update_notice'),
+    path('delete-notice/<int:id>/', views.delete_notice, name='delete_notice'),
 ]
