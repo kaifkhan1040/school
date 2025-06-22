@@ -10,6 +10,7 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_GET
 
 # Create your views here.
+
 def index(request):
     return render(request,'customadmin/index.html')
 

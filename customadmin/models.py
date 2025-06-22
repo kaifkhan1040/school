@@ -3,6 +3,11 @@ from ckeditor.fields import RichTextField
 from django.core.exceptions import ValidationError
 
 # Create your models here.
+class Our_Mission(models.Model):
+    list=models.TextField(blank=True)
+
+class OUr_Vision(models.Model):
+    list=models.TextField(blank=True)
 
 class Event(models.Model):
     name = models.CharField(max_length=100)

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'customadmin',
     'users',
     'ckeditor',
+    'firstapp'
 ]
 STORAGES = {
     "default": {

@@ -23,6 +23,7 @@ urlpatterns = [
     path('superadmin/', admin.site.urls),
     path('admin/',include(('customadmin.urls','customadmin'),namespace='customadmin')),
     path('web/',include(('website.urls','website'),namespace='web')),
+    path('first/',include(('firstapp.urls','f-app'),namespace='f-app')),
     path('',include(('website2.urls','website2'),namespace='web2')),
     path('user/',include(('users.urls','user'),namespace='user')),
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
