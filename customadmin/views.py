@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse_lazy
-from .models import Event,Gallery,Contactus,Course,Notice
-from .forms import EventForm,GalleryForm,ContactusForm,CourseForm,NoticeForm
+from .models import Event,Gallery,Contactus,Course,Notice,Testimonie
+from .forms import EventForm,GalleryForm,ContactusForm,CourseForm,NoticeForm,TestimonieForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import JsonResponse
@@ -236,4 +236,51 @@ def delete_notice(request,id=None):
         
         messages.success(request, f'Notice has been removed successfully!')
         return redirect('customadmin:notice')
+
+
+
+def testimonial(request):
+    testimonie = Testimonie.objects.all()
+    return render(request,'customadmin/testimonie.html',{'testimonie':testimonie})
+
+def add_testimonial(request,id=None):
+    print('run')
+    if request.method == "POST":
+        print('post')
+        print(request.POST)
+        obj=None
+        if id:
+            obj = get_object_or_404(Testimonie, id=id)
+            print('data:',obj)
+            form = TestimonieForm(request.POST,request.FILES,instance=obj)
+        else:
+            form = TestimonieForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            
+            messages.success(request, f'Testimonie been updated successfully!')
+            return redirect('customadmin:testimonial')
+        else:
+            print('errr',form.errors)
+            
+            messages.error(request, f'{form.errors}')
+    else:
+        obj=None
+        print(id)
+        if id:
+            obj = get_object_or_404(Testimonie, id=id)
+         
+            form = TestimonieForm(instance=obj)
+        else:
+            form = TestimonieForm()
+    
+    return render(request, 'customadmin/testimonie_add.html', {'form': form,'obj':obj})
+
+def delete_testimonial(request,id=None):
+    if id:
+        obj = get_object_or_404(Testimonie, id=id)
+        obj.delete()
+        
+        messages.success(request, f'Testimonie has been removed successfully!')
+        return redirect('customadmin:testimonial')
 

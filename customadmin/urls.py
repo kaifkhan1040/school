@@ -23,4 +23,8 @@ urlpatterns = [
     path('add-notice/', views.add_notice, name='add_notice'),
     path('update-notice/<int:id>/', views.add_notice, name='update_notice'),
     path('delete-notice/<int:id>/', views.delete_notice, name='delete_notice'),
+    path('testimonial/', views.testimonial, name='testimonial'),
+    path('add-testimonial/', views.add_testimonial, name='add_testimonial'),
+    path('update-testimonial/<int:id>/', views.add_testimonial, name='update_testimonial'),
+    path('delete-testimonial/<int:id>/', views.delete_testimonial, name='delete_testimonial'),
 ]

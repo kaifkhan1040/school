@@ -67,3 +67,9 @@ class Course(models.Model):
 
     def __str__(self):
         return self.title
+    
+
+class Testimonie(models.Model):
+    message=models.TextField()
+    name=models.CharField(max_length=25)
+    image=models.ImageField(upload_to='testimonie/image/')

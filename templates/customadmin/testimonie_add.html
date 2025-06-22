@@ -37,7 +37,7 @@
                                     </div>
                                 <!-- Account Tab starts -->
                                 <div class="card-header border-bottom">
-                                    <h4 class="card-title">Gallery</h4>
+                                    <h4 class="card-title">Testimonie</h4>
                                 </div>
                                 <div class="card-body py-2 my-25">
                                     
@@ -71,37 +71,34 @@
                                             }
                                             });
                                         </script>
+                                        
                                     <!--/ upload and reset button -->
                                     
                                         <div class="tab-pane active" id="account" aria-labelledby="account-tab" role="tabpanel">
                                             {% csrf_token %}
                                             <div class="row">
                                               
-                                                <div class="col-md-4">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="username">title</label>
-                                                        {{form.title}}
+                                                        <label for="username">Name</label>
+                                                        {{form.name}}
                                                         <!-- <input type="file" name="image" id="account-upload" accept="image/*" /> -->
 
                                                         <!-- {{form.image}} -->
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="col-md-6 mb-2">
                                                     <div class="form-group">
-                                                        <label for="username">Decsciption</label>
-                                                        {{form.description}}
-                                                        
+                                                        <label for="username">Message</label>
+                                                        {{form.message}}
+                                                        <!-- <input type="file" name="image" id="account-upload" accept="image/*" /> -->
+
+                                                        <!-- {{form.image}} -->
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="username">Video</label>
-                                                        {{form.video}}
-                                                        
-                                                    </div>
-                                                </div>
+                                            </div>
+                                            <div class="row">
                                                 
-                                
                                             </div>
                                             <div class="col-12 d-flex flex-sm-row flex-column mt-2">
                                                 <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1">Save Changes</button>
