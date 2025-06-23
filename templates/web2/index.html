@@ -854,21 +854,25 @@ h2 {
       <!-- <p class="vm-highlight">"Pratibha Poshanam"</p>
       <p class="vm-subheading">Developing Global Leaders of Tomorrow</p> -->
       <ul class="vm-list">
+        {%for i in vission %}
       <li>
-        To nurture confident, curious, and compassionate learners ready to face the challenges of tomorrow.
+        {{i.point}}
       </li>
-      <li>
+      {% endfor %}
+    </ul>
+      {% comment %} <li>
         To create a joyful and inclusive environment that fosters holistic development in every child.
       </li>
-      <li>To be a leading institution known for innovation, excellence, and strong foundational education.</li></ul>
+      <li>To be a leading institution known for innovation, excellence, and strong foundational education.</li></ul> {% endcomment %}
     </div>
     <div class="vm-box">
       <h2 class="vm-heading" style="text-align: center;">Our Mission</h2>
       <ul class="vm-list">
-        <li>To provide a safe, engaging, and value-based learning atmosphere where children love to learn and grow.</li>
-        <li>To develop essential life skills, creativity, and discipline through a balanced academic and co-curricular program.</li>
-        <li>To build strong partnerships with parents and the community to support every child’s journey to success.</li>
-       
+        {% for i in mission %}
+        <li>
+        {{i.point}}
+      </li>
+      {% endfor %}
       </ul>
     </div>
   </div>

@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect, get_object_or_404
 from customadmin.forms import ContactusForm
 from django.contrib import messages
-from customadmin.models import Gallery,Event,Notice,Testimonie
+from customadmin.models import Gallery,Event,Notice,Testimonie,MissionAndVission
 from django.http import FileResponse, Http404
 import os
 
@@ -25,8 +25,10 @@ def index(request):
     print('*'*100)
     notices=Notice.objects.all()
     testimonie=Testimonie.objects.all()
-    print('*'*1000)
-    print('notice:',notices)
+    vission=MissionAndVission.objects.filter(category='Our Vision')
+    mission=MissionAndVission.objects.filter(category='Our Mission')
+
+   
     # print(gallery_group)
     # for i in gallery_group:
     #     print(i)
@@ -35,7 +37,7 @@ def index(request):
     return render(request,'web2/index.html',{
         # 'car_brands_grouped':car_brands_grouped,'car':car,
                                             'form':form,'gallery_group':gallery_group,'notices':notices,'is_index':True,
-                                            'testimonie_grouped':testimonie_grouped
+                                            'testimonie_grouped':testimonie_grouped,'vission':vission,'mission':mission
                                             })
 
 def about(request):

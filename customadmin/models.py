@@ -73,3 +73,7 @@ class Testimonie(models.Model):
     message=models.TextField()
     name=models.CharField(max_length=25)
     image=models.ImageField(upload_to='testimonie/image/')
+
+class MissionAndVission(models.Model):
+    point = models.CharField(max_length=2000)
+    category = models.CharField(max_length=30,choices=(('Our Vision','Our Vision'),('Our Mission','Our Mission')))

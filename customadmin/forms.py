@@ -3,7 +3,7 @@ from users.models import CustomUser
 from django.forms import EmailInput
 from django.forms import ModelForm, TextInput, EmailInput, CharField, PasswordInput, ChoiceField, BooleanField, \
     NumberInput, DateInput
-from .models import Event,Gallery,Contactus,Course,Notice,Testimonie
+from .models import Event,Gallery,Contactus,Course,Notice,Testimonie,MissionAndVission
 from ckeditor.widgets import CKEditorWidget
 from datetime import date, timedelta
 from django.core.exceptions import ValidationError
@@ -139,4 +139,14 @@ class TestimonieForm(ModelForm):
         
     class Meta:
             model = Testimonie
+            fields = '__all__'
+
+class MissionAndVissionForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
+        
+    class Meta:
+            model = MissionAndVission
             fields = '__all__'

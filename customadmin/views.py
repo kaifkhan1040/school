@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse_lazy
-from .models import Event,Gallery,Contactus,Course,Notice,Testimonie
-from .forms import EventForm,GalleryForm,ContactusForm,CourseForm,NoticeForm,TestimonieForm
+from .models import Event,Gallery,Contactus,Course,Notice,Testimonie,MissionAndVission
+from .forms import EventForm,GalleryForm,ContactusForm,CourseForm,NoticeForm,TestimonieForm,MissionAndVission,MissionAndVissionForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import JsonResponse
@@ -283,4 +283,52 @@ def delete_testimonial(request,id=None):
         
         messages.success(request, f'Testimonie has been removed successfully!')
         return redirect('customadmin:testimonial')
+    
+
+def our_vission_mission(request):
+    data = MissionAndVission.objects.all()
+    return render(request,'customadmin/vission.html',{'data':data})
+
+def add_our_vission_mission(request,id=None):
+    print('run')
+    if request.method == "POST":
+        print('post')
+        print(request.POST)
+        obj=None
+        if id:
+            obj = get_object_or_404(MissionAndVission, id=id)
+            print('data:',obj)
+            form = MissionAndVissionForm(request.POST,request.FILES,instance=obj)
+        else:
+            form = MissionAndVissionForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            
+            messages.success(request, f'Mission And Vission been updated successfully!')
+            return redirect('customadmin:our_vission_mission')
+        else:
+            print('errr',form.errors)
+            
+            messages.error(request, f'{form.errors}')
+    else:
+        obj=None
+        print(id)
+        if id:
+            obj = get_object_or_404(MissionAndVission, id=id)
+         
+            form = MissionAndVissionForm(instance=obj)
+        else:
+            form = MissionAndVissionForm()
+    
+    return render(request, 'customadmin/vission_add.html', {'form': form,'obj':obj})
+
+def delete_our_vission_mission(request,id=None):
+    if id:
+        obj = get_object_or_404(MissionAndVission, id=id)
+        obj.delete()
+        
+        messages.success(request, f'Mission And Vission has been removed successfully!')
+        return redirect('customadmin:our_vission_mission')
+    
+
 
