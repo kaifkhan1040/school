@@ -6,6 +6,9 @@ from django.core.exceptions import ValidationError
 class Our_Mission(models.Model):
     list=models.TextField(blank=True)
 
+    def __str__(self):
+        return self.list
+    
 class OUr_Vision(models.Model):
     list=models.TextField(blank=True)
 
