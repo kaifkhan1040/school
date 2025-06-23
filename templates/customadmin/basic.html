@@ -352,7 +352,7 @@
         <li class="auto-suggestion justify-content-between"><a class="d-flex align-items-center justify-content-between w-100 py-50">
                 <div class="d-flex justify-content-start"><span class="me-75" data-feather="alert-circle"></span><span>No results found.</span></div>
             </a></li>
-    </ul> 
+    </ul>
     <!-- END: Header-->
 
 
@@ -425,7 +425,7 @@
                         </li>
                         <li><a class="d-flex align-items-center" href="app-invoice-edit.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Edit">Edit</span></a>
                         </li>
-                        <li><a class="d-flex align-items-center" href="app-invoice-add.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">Add</span></a> 
+                        <li><a class="d-flex align-items-center" href="app-invoice-add.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Add">Add</span></a>
                         </li>
                     </ul>
                 </li>
@@ -454,9 +454,11 @@
                 <li class=" nav-item"><a class="d-flex align-items-center" href="{% url 'customadmin:enent' %}"><i data-feather="user"></i><span class="menu-title text-truncate" data-i18n="User">Events</span></a>
                     <li class=" nav-item"><a class="d-flex align-items-center" href="{% url 'customadmin:gallery' %}"><i data-feather="user"></i><span class="menu-title text-truncate" data-i18n="User">Gallery</span></a>
                         <li class=" nav-item"><a class="d-flex align-items-center" href="{% url 'customadmin:contactus' %}"><i data-feather="user"></i><span class="menu-title text-truncate" data-i18n="User">Contact Us</span></a>
-                            <li class=" nav-item"><a class="d-flex align-items-center" href="{% url 'customadmin:course' %}"><i data-feather="user"></i><span class="menu-title text-truncate" data-i18n="User">Course</span></a>
+                            <!--<li class=" nav-item"><a class="d-flex align-items-center" href="{% url 'customadmin:course' %}"><i data-feather="user"></i><span class="menu-title text-truncate" data-i18n="User">Course</span></a>-->
+                             <li class=" nav-item"><a class="d-flex align-items-center" href="{% url 'customadmin:notice' %}"><i data-feather="user"></i><span class="menu-title text-truncate" data-i18n="User">Notice</span></a>
+
                             {% comment %} <li class=" nav-item"><a class="d-flex align-items-center" href="{% url 'customadmin:leave' %}"><i data-feather="calendar"></i><span class="menu-title text-truncate" data-i18n="User">User Attendance</span></a> {% endcomment %}
-                                
+
                                 {% comment %} <ul class="menu-content">
                         <li><a class="d-flex align-items-center" href="app-user-list.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="List">List</span></a>
                         </li>
